@@ -1,12 +1,21 @@
 function updateDisplay(){
     let num="";
-    if(number[0]=="0" && number.length>1){
+    if(number[0]=="0" && number.length>1 && number[1]!="."){
         number.shift();
     }
     for(let i=0; i<number.length; i++){
+        if(number[i]=="." && number[0].indexOf(".")!=-1){
+            continue;
+        }
         num+=number[i];
     }
-    if(num.length>9){
+    if(num.length>10){
+        return;
+    }
+    if(num.length==10 && num[num.length-1]=="."){
+        num=num.substring(0, num.length-1);
+    }
+    if(num.length==10 && num.indexOf(".")==-1){
         return;
     }
     display.innerHTML=num;
@@ -35,8 +44,10 @@ var multiply=document.getElementById("multiply");
 var divide=document.getElementById("divide");
 var del=document.getElementById("delete");
 var clear=document.getElementById("clear");
-const number=[];
+var decimal=document.getElementById("decimal");
+const number=["0"];
 const operation=[];
+updateDisplay();
 one.addEventListener("click", () => {
     number.push("1");
     updateDisplay();
@@ -91,7 +102,13 @@ divide.addEventListener("click", ()=>{
 });
 
 del.addEventListener("click", () =>{
-    number[0]=Math.floor(number[0]/10);
+    number[0]=number[0].substring(0, number[0].length-1);
+    if(number[0].substring(number[0].length-1)=="."){
+        number[0]=number[0].substring(0, number[0].length-1);
+    }
+    if(number[0].length==0){
+        number[0]=0;
+    }
     updateDisplay();
 });
 
@@ -99,5 +116,11 @@ clear.addEventListener("click", () =>{
     for(let j=number.length; j>=0; j--){
         number.pop();
     }
+    number.push("0");
     updateDisplay();
 });
+
+decimal.addEventListener("click", () =>{
+    number.push(".");
+    updateDisplay();
+})
