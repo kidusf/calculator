@@ -26,15 +26,15 @@ body{
     display:flex;
     border-radius: 10px;
     background-color:floralwhite;
-    padding: 40px 200px;
     border: 1px solid black;
    justify-content: flex-end;
-   width: initial;
-   height: initial;
+    box-sizing: border-box;
+    width: 427px;
+    height: 127px;
    
 }
 #answer{
-    font-size: 48px;
+    font-size: 80px;
     vertical-align: bottom;
 }
 .buttons{
