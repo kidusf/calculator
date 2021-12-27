@@ -1,31 +1,77 @@
 function updateDisplay(){
-    let num="";
     if(number[0]=="0" && number.length>1 && number[1]!="."){
-        number.shift();
+        number=number.slice(1);
     }
-    for(let i=0; i<number.length; i++){
-        if(number[i]=="." && number[0].indexOf(".")!=-1){
-            continue;
+    
+    if(number.length>10 && number.indexOf(".")==-1){
+        return;
+    }
+
+    if(number.length>10 && number.indexOf(".")!=-1){
+        if(number.indexOf("e")==-1){
+            number=number.slice(0, 10);
         }
-        num+=number[i];
+        else{
+            number=0;
+        }
     }
-    if(num.length>10){
+    if(number.length==10 && number[number.length-1]=="."){
+        number=number.slice(0, -1);
+    }
+    if(number.length==10 && number.indexOf(".")==-1){
         return;
     }
-    if(num.length==10 && num[num.length-1]=="."){
-        num=num.substring(0, num.length-1);
-    }
-    if(num.length==10 && num.indexOf(".")==-1){
-        return;
-    }
-    display.innerHTML=num;
-    for(let j=number.length; j>=0; j--){
-        number.pop();
-    }
-    number.push(num);
-    operation.push(num);
+    display.innerHTML=number;
 }
 
+function printExpression(){
+    let str="";
+    for(let i=0; i<operation.length; i++){
+        str+=operation[i];
+    }
+    console.log(str);
+    console.log("size of "+ operation.length);
+}
+
+function operate(){
+    let b=operation.pop();
+    let sign=operation.pop();
+    let a=operation.pop();
+    b=parseFloat(b);
+     a=parseFloat(a);
+    let result=0;
+    if(sign=="+"){
+        result=a+b;
+    }
+    if(sign=="-"){
+        result=a-b;
+    }
+    if(sign=="x"){
+        result=a*b;
+        if(result%Math.pow(10, 9)!=0){
+            result=Infinity;
+        }
+    }
+    if(sign=="/"){
+        if(b!=0){
+            result=a/b;
+        }
+        else{
+            result="Undefined";
+        }
+    }
+    console.log(result);
+    clearNumber();
+    number+=result;
+    console.log(number[1]);
+    for(let i=operation.length; i>=0; i--){
+        operation.pop();
+    }
+}
+
+function clearNumber(){
+   number="0";
+}
 
 var nine=document.getElementById("nine");
 var eight=document.getElementById("eight");
@@ -45,82 +91,140 @@ var divide=document.getElementById("divide");
 var del=document.getElementById("delete");
 var clear=document.getElementById("clear");
 var decimal=document.getElementById("decimal");
-const number=["0"];
+var equals=document.getElementById("equals");
+
+var number="0";
 const operation=[];
 updateDisplay();
 one.addEventListener("click", () => {
-    number.push("1");
+    number+="1";
     updateDisplay();
     });
 two.addEventListener("click",() => {
-    number.push("2");
+    number+="2";
     updateDisplay();
     });
 three.addEventListener("click",() => {
-    number.push("3");
+    number+="3";
     updateDisplay();
     });
 four.addEventListener("click", () => {
-    number.push("4");
+    number+="4";
     updateDisplay();
     });
 five.addEventListener("click", () => {
-    number.push("5");
+    number+="5";
     updateDisplay();
     });
 six.addEventListener("click", () => {
-    number.push("6");
+    number+="6";
     updateDisplay();
     });
 seven.addEventListener("click", () => {
-    number.push("7");
+    number+="7";
     updateDisplay();
     });
 eight.addEventListener("click",() => {
-    number.push("8");
+    number+="8";
     updateDisplay();
     });
 nine.addEventListener("click", () => {
-    number.push("9");
+    number+="9";
     updateDisplay();
     });
 zero.addEventListener("click", () => {
-    number.push("0");
+    number+="0";
     updateDisplay();
     });
 add.addEventListener("click", ()=>{
+    operation.push(display.innerHTML);
+    if(operation.length==3){
+        operate();
+        updateDisplay();
+        operation.push(display.innerHTML);
+    }
+    clearNumber();
     operation.push("+");
+    printExpression();
 });
 multiply.addEventListener("click", ()=>{
+    operation.push(display.innerHTML);
+    if(operation.length==3){
+        operate();
+        updateDisplay();
+        operation.push(display.innerHTML);
+    }
+    clearNumber();
     operation.push("x");
+    printExpression();
 });
 subtract.addEventListener("click", ()=>{
+    operation.push(display.innerHTML);
+    if(operation.length==3){
+        operate();
+        updateDisplay();
+        operation.push(display.innerHTML);
+    }
+    clearNumber();
     operation.push("-");
+    printExpression();
 });
 divide.addEventListener("click", ()=>{
-    operation.push("/");
+    operation.push(display.innerHTML);
+    if(operation.length==3){
+        operate();
+        updateDisplay();
+        operation.push(display.innerHTML);
+    }
+    clearNumber();
+   operation.push("/");
+    printExpression();
 });
 
-del.addEventListener("click", () =>{
-    number[0]=number[0].substring(0, number[0].length-1);
-    if(number[0].substring(number[0].length-1)=="."){
-        number[0]=number[0].substring(0, number[0].length-1);
+equals.addEventListener("click", () =>{
+    operation.push(display.innerHTML);
+    if(operation.length==3){
+        operate();
+        updateDisplay();
     }
-    if(number[0].length==0){
-        number[0]=0;
+    printExpression();
+})
+del.addEventListener("click", () =>{
+    if(number=="Undefined"){
+        display.innerHTML=0;
+        return;
+    }
+    number=number.slice(0, -1);
+    if(number[number.length-1]=="."){
+        number=number.slice(0, -1);
+    }
+    if(number.length==0){
+       num=display.innerHTML;
+       console.log(num);
+       num=num.slice(0,-1);
+       if(num[num.length-1]=="."){
+        num=num.slice(0,-1);
+       }
+       if(num.length==0){
+        display.innerHTML=0;
+       }
+       else{
+        display.innerHTML=num;
+       }
+       return;
+        
     }
     updateDisplay();
 });
 
 clear.addEventListener("click", () =>{
-    for(let j=number.length; j>=0; j--){
-        number.pop();
-    }
-    number.push("0");
+    clearNumber();
     updateDisplay();
 });
 
 decimal.addEventListener("click", () =>{
-    number.push(".");
+    if(number.indexOf(".")==-1){
+        number+="."
+    }
     updateDisplay();
 })
