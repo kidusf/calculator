@@ -48,7 +48,7 @@ function operate(){
     }
     if(sign=="x"){
         result=a*b;
-        if(result%Math.pow(10, 9)!=0){
+        if(Math.floor(result/parseInt(Math.pow(10, 9)))!=0){
             result=Infinity;
         }
     }
