@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;1,900&display=swap');
+
+body{
+    background-color: azure;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.base{
+    display:flex;
+    flex-direction: column;
+    padding: 150px 75px;
+    margin: 50px 500px;
+    background-color: grey;
+    border-radius: 50px;
+    gap: 30px;
+    align-items: center;
+}
+
+.screen, .base{
+    border: 1px solid black;
+    background-position: left top;
+    background-repeat: repeat;
+}
+
+.screen{
+    display:flex;
+    border-radius: 10px;
+    background-color:floralwhite;
+    padding: 40px 200px;
+    border: 1px solid black;
+   justify-content: flex-end;
+   width: initial;
+   height: initial;
+   
+}
+#answer{
+    font-size: 48px;
+    vertical-align: bottom;
+}
+.buttons{
+    display: flex;
+    gap: 50px;
+}
+
+#clear, #delete{
+    border: 1px solid black;
+    padding: 20px 60px;
+    border-radius: 15px;
+    background-position: left top;
+    background-repeat: repeat;
+}
+#clear{
+background-color: lightblue;
+}
+
+#delete{
+background-color:tomato;
+
+}
+.inputs{
+    display:flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.first-row, .second-row, .third-row, .fourth-row{
+    display: flex;
+    gap: 25px; 
+}
+
+#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #add, #multiply, #divide, #subtract, #decimal, #equals{
+    display: grid;
+    place-items: center;
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    background-color: azure;
+    border-radius: 5px;
+    background-position: left top;
+    background-repeat: repeat;
+    font-size:24px;
+}
