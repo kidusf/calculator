@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;1,900&display=swap');
 
 body{
-    background-color: azure;
+    background: linear-gradient(blue, 10%, pink);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -10,7 +10,7 @@ body{
     flex-direction: column;
     padding: 150px 75px;
     margin: 50px 500px;
-    background-color: grey;
+    background-color:darkgray;
     border-radius: 50px;
     gap: 30px;
     align-items: center;
@@ -50,7 +50,7 @@ body{
     background-repeat: repeat;
 }
 #clear{
-background-color: lightblue;
+background-color: lightskyblue;
 }
 
 #delete{
@@ -75,9 +75,22 @@ background-color:tomato;
     box-sizing: border-box;
     width: 80px;
     height: 80px;
-    background-color: azure;
+    background-color:aliceblue;
     border-radius: 5px;
     background-position: left top;
     background-repeat: repeat;
     font-size:24px;
+}
+
+#one:active, #two:active, #three:active, #four:active, #five:active, #six:active, #seven:active, #eight:active, #nine:active, #zero:active, #add:active, 
+#multiply:active, #divide:active, #subtract:active, #decimal:active, #equals:active{
+    background-color: whitesmoke;
+}
+
+#clear:active{
+    background-color: lightblue;
+}
+
+#delete:active{
+    background-color:lightcoral;
 }
