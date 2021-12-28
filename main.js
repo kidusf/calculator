@@ -63,14 +63,14 @@ function operate(){
     console.log(result);
     clearNumber();
     number+=result;
-    console.log(number[1]);
+    console.log(number);
     for(let i=operation.length; i>=0; i--){
         operation.pop();
     }
 }
 
 function clearNumber(){
-   number="0";
+   number=0;
 }
 
 var nine=document.getElementById("nine");
@@ -220,6 +220,9 @@ del.addEventListener("click", () =>{
 clear.addEventListener("click", () =>{
     clearNumber();
     updateDisplay();
+    for(let i=operation.length; i>=0; i--){
+        operation.pop();
+    }
 });
 
 decimal.addEventListener("click", () =>{
