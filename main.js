@@ -62,7 +62,7 @@ function operate(){
             result="Undefined";
         }
     }
-    console.log(result);
+    //console.log(result);
     clearNumber();
     number+=result;
     console.log(number);
@@ -147,7 +147,7 @@ add.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("+");
-    printExpression();
+    //printExpression();
 });
 multiply.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -158,7 +158,7 @@ multiply.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("x");
-    printExpression();
+    //printExpression();
 });
 subtract.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -169,7 +169,7 @@ subtract.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("-");
-    printExpression();
+    //printExpression();
 });
 divide.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -180,7 +180,7 @@ divide.addEventListener("click", ()=>{
     }
     clearNumber();
    operation.push("/");
-    printExpression();
+    //printExpression();
 });
 
 equals.addEventListener("click", () =>{
