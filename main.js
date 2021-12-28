@@ -25,13 +25,14 @@ function updateDisplay(){
     display.innerHTML=number;
 }
 
+//used to debug
 function printExpression(){
     let str="";
     for(let i=0; i<operation.length; i++){
         str+=operation[i];
     }
-    console.log(str);
-    console.log("size of "+ operation.length);
+    ///console.log(str);
+    //console.log("size of "+ operation.length);
 }
 
 function operate(){
@@ -146,7 +147,7 @@ add.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("+");
-    printExpression();
+    //printExpression();
 });
 multiply.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -157,7 +158,7 @@ multiply.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("x");
-    printExpression();
+    //printExpression();
 });
 subtract.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -168,7 +169,7 @@ subtract.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("-");
-    printExpression();
+    //printExpression();
 });
 divide.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -179,7 +180,7 @@ divide.addEventListener("click", ()=>{
     }
     clearNumber();
    operation.push("/");
-    printExpression();
+    //printExpression();
 });
 
 equals.addEventListener("click", () =>{
@@ -188,7 +189,7 @@ equals.addEventListener("click", () =>{
         operate();
         updateDisplay();
     }
-    printExpression();
+    //printExpression();
 })
 del.addEventListener("click", () =>{
     if(number=="Undefined"){
