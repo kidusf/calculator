@@ -31,8 +31,8 @@ function printExpression(){
     for(let i=0; i<operation.length; i++){
         str+=operation[i];
     }
-    ///console.log(str);
-    //console.log("size of "+ operation.length);
+    console.log(str);
+    console.log("size of "+ operation.length);
 }
 
 function operate(){
@@ -147,7 +147,7 @@ add.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("+");
-    //printExpression();
+    printExpression();
 });
 multiply.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -158,7 +158,7 @@ multiply.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("x");
-    //printExpression();
+    printExpression();
 });
 subtract.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -169,7 +169,7 @@ subtract.addEventListener("click", ()=>{
     }
     clearNumber();
     operation.push("-");
-    //printExpression();
+    printExpression();
 });
 divide.addEventListener("click", ()=>{
     operation.push(display.innerHTML);
@@ -180,7 +180,7 @@ divide.addEventListener("click", ()=>{
     }
     clearNumber();
    operation.push("/");
-    //printExpression();
+    printExpression();
 });
 
 equals.addEventListener("click", () =>{
@@ -196,6 +196,7 @@ del.addEventListener("click", () =>{
         display.innerHTML=0;
         return;
     }
+    number=number.toString();
     number=number.slice(0, -1);
     if(number[number.length-1]=="."){
         number=number.slice(0, -1);
@@ -228,6 +229,9 @@ clear.addEventListener("click", () =>{
 });
 
 decimal.addEventListener("click", () =>{
+    if(number.length==0){
+        number+="0."
+    }
     if(number.indexOf(".")==-1){
         number+="."
     }
