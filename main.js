@@ -1,6 +1,7 @@
 function updateDisplay(){
+    number=number.toString();
     if(number[0]=="0" && number.length>1 && number[1]!="."){
-        number=number.slice(1);
+        number=number.substring(1);
     }
     
     if(number.length>10 && number.indexOf(".")==-1){
@@ -8,11 +9,11 @@ function updateDisplay(){
     }
 
     if(number.length>10 && number.indexOf(".")!=-1){
-        if(number.indexOf("e")==-1){
-            number=number.slice(0, 10);
+        if(number.indexOf("e")!=-1){
+            return;
         }
         else{
-            number=0;
+            number=number.substring(0, 10);
         }
     }
     if(number.length==10 && number[number.length-1]=="."){
