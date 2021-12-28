@@ -65,7 +65,7 @@ function operate(){
     //console.log(result);
     clearNumber();
     number+=result;
-    console.log(number);
+    //console.log(number);
     for(let i=operation.length; i>=0; i--){
         operation.pop();
     }
